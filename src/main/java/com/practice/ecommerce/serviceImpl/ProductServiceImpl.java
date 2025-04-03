@@ -1,10 +1,12 @@
-package com.practice.ecommerce.service;
+package com.practice.ecommerce.serviceImpl;
 
 import com.practice.ecommerce.dao.ProductDAO;
 import com.practice.ecommerce.model.Product;
+import com.practice.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service

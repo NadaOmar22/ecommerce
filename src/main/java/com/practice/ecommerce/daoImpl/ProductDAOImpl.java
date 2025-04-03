@@ -1,15 +1,12 @@
-package com.practice.ecommerce.dao;
+package com.practice.ecommerce.daoImpl;
 
+import com.practice.ecommerce.dao.ProductDAO;
 import com.practice.ecommerce.model.Product;
-import jakarta.transaction.Transactional;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Repository
