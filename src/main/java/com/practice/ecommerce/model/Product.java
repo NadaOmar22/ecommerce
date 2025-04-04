@@ -1,6 +1,8 @@
 package com.practice.ecommerce.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,6 +22,8 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Category category;
 }
 

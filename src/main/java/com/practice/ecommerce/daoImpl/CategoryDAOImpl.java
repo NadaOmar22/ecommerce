@@ -37,6 +37,9 @@ public class CategoryDAOImpl implements CategoryDAO {
     public void deleteCategory(int id) {
         Session session = sessionFactory.getCurrentSession();
         Category category = session.get(Category.class, id);
+        if (category != null && category.getProduct() != null && !category.getProduct().isEmpty()) {
+            throw new RuntimeException("Cannot delete category. Products are still assigned to it.");
+        }
         if (category != null) {
             session.delete(category);
         }

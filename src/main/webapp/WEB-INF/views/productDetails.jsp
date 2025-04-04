@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Product Details</title>
@@ -30,6 +31,16 @@
             <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea class="form-control" id="description" name="description">${product.description}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select class="form-control" id="category" name="category.id" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <c:forEach var="category" items="${categories}">
+                        <option value="${category.id}" ${category.id == product.category.id ? 'selected' : ''}>${category.name}</option>
+                    </c:forEach>
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>

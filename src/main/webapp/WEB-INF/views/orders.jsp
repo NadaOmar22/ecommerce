@@ -1,36 +1,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Product List</title>
+    <title>Orders</title>
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-4">
-        <h2 class="mb-4">Product List</h2>
+        <h2 class="mb-4">Orders</h2>
 
         <!-- Table styled with Bootstrap -->
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Sale Price</th>
-                    <th>Cost Price</th>
                     <th>Description</th>
+                    <th>Date</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="product" items="${products}">
+                <c:forEach var="order" items="${orders}">
                     <tr>
-                        <td>${product.name}</td>
-                        <td>${product.salePrice}</td>
-                        <td>${product.costPrice}</td>
                         <td>${product.description}</td>
+                        <td>${product.date}</td>
+                        <td>${product.status}</td>
                         <td>
                             <!-- Add Bootstrap button styling to actions -->
-                            <a href="products/details/${product.id}" class="btn btn-info btn-sm">Edit</a>
-                            <a href="products/delete/${product.id}" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="orders/details/${order.id}" class="btn btn-info btn-sm">Edit</a>
+                            <a href="orders/delete/${order.id}" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -38,7 +36,7 @@
         </table>
 
         <!-- Add New Product link with Bootstrap styling -->
-        <a href="products/ProductForm" class="btn btn-success">Add New Product</a>
+        <a href="products/ProductForm" class="btn btn-success">Add New Order</a>
     </div>
 
     <!-- Add Bootstrap JS and dependencies (optional for Bootstrap features like modals, dropdowns) -->

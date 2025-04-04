@@ -8,7 +8,6 @@
     <div class="container mt-4">
         <h2 class="mb-4">Category Details</h2>
 
-        <!-- Form for Product Details -->
         <form action="/categories/save" method="post">
             <input type="hidden" name="id" value="${category.id}" />
 

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Product Details</title>
+    <title>Branch Details</title>
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -8,7 +8,6 @@
     <div class="container mt-4">
         <h2 class="mb-4">Branch Details</h2>
 
-        <!-- Form for Product Details -->
         <form action="/branches/save" method="post">
             <input type="hidden" name="id" value="${branch.id}" />
 

@@ -1,6 +1,8 @@
 package com.practice.ecommerce.controller;
 
+import com.practice.ecommerce.model.Category;
 import com.practice.ecommerce.model.Product;
+import com.practice.ecommerce.service.CategoryService;
 import com.practice.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     // List all products
     @GetMapping
     public String listProducts(Model model) {
@@ -29,6 +34,8 @@ public class ProductController {
     public String showProductDetails(@PathVariable int id, Model model) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         return "productDetails";
     }
 
@@ -42,6 +49,8 @@ public class ProductController {
     @GetMapping("/ProductForm")
     public String showProductForm(Model model) {
         model.addAttribute("product", new Product());
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         return "productDetails";
     }
 

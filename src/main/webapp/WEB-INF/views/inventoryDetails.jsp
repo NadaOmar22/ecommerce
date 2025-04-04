@@ -1,35 +1,47 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-    <title>Product Details</title>
+    <title>Inventory Details</title>
     <!-- Add Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="container mt-4">
-        <h2 class="mb-4">Product Details</h2>
+        <h2 class="mb-4">Inventory Details</h2>
 
-        <!-- Form for Product Details -->
-        <form action="/products/save" method="post">
-            <input type="hidden" name="id" value="${product.id}" />
+        <form action="/inventories/save" method="post">
+            <input type="hidden" name="id" value="${inventory.id}" />
 
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" value="${product.name}" required />
+                <label for="product">Product:</label>
+                <select class="form-control" id="product" name="product.id" required>
+                    <option value="" disabled>Select a product</option>
+                    <c:forEach var="product" items="${products}">
+                        <option value="${product.id}"
+                            <c:if test="${not empty inventory.product and product.id == inventory.product.id}">selected</c:if>>
+                            ${product.name}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="salePrice">salePrice:</label>
-                <input type="number" class="form-control" step="0.01" id="salePrice" name="salePrice" value="${product.salePrice}" required />
+                <label for="branch">Product:</label>
+                <select class="form-control" id="branch" name="branch.id" required>
+                    <option value="" disabled>Select a branch</option>
+                    <c:forEach var="branch" items="${branches}">
+                        <option value="${branch.id}"
+                            <c:if test="${not empty inventory.branch and branch.id == inventory.branch.id}">selected</c:if>>
+                            ${branch.name}
+                        </option>
+                    </c:forEach>
+                </select>
             </div>
 
             <div class="form-group">
-                <label for="costPrice">costPrice:</label>
-                <input type="number" class="form-control" step="0.01" id="costPrice" name="costPrice" value="${product.costPrice}" required />
-            </div>
-
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea class="form-control" id="description" name="description">${product.description}</textarea>
+                <label for="quantity">Quantity:</label>
+                <input type="number" class="form-control" step="0.01" id="quantity" name="quantity" value="${inventory.quantity}" required />
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
@@ -37,7 +49,7 @@
 
         <br>
         <!-- Back to Product List -->
-        <a href="../" class="btn btn-secondary">Back to Product List</a>
+        <a href="../" class="btn btn-secondary">Back to Inventories List</a>
     </div>
 
     <!-- Add Bootstrap JS and dependencies (optional for Bootstrap features like modals, dropdowns) -->
