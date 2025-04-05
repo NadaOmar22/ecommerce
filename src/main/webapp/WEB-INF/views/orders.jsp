@@ -22,9 +22,9 @@
             <tbody>
                 <c:forEach var="order" items="${orders}">
                     <tr>
-                        <td>${product.description}</td>
-                        <td>${product.date}</td>
-                        <td>${product.status}</td>
+                        <td>${order.description}</td>
+                        <td>${order.date}</td>
+                        <td>${order.status}</td>
                         <td>
                             <!-- Add Bootstrap button styling to actions -->
                             <a href="orders/details/${order.id}" class="btn btn-info btn-sm">Edit</a>
@@ -36,7 +36,7 @@
         </table>
 
         <!-- Add New Product link with Bootstrap styling -->
-        <a href="products/ProductForm" class="btn btn-success">Add New Order</a>
+        <a href="orders/orderForm" class="btn btn-success">Add New Order</a>
     </div>
 
     <!-- Add Bootstrap JS and dependencies (optional for Bootstrap features like modals, dropdowns) -->

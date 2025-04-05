@@ -23,7 +23,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public List<Order> getAllOrders() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Orders", Order.class).list();
+        return session.createQuery("from Order", Order.class).list();
     }
 
     @Override
@@ -88,6 +88,14 @@ public class OrderDAOImpl implements OrderDAO {
         order.setStatus("CONFIRMED");
         session.update(order);
     }
+
+    @Override
+    public List<OrderItem> getOrderItems(int orderId) {
+        Session session = sessionFactory.getCurrentSession();
+        Order order = session.get(Order.class, orderId);
+        return session.createQuery("from OrderItem oi where oi.order = :order", OrderItem.class)
+                .setParameter("order", order)
+                .list();    }
 
 
 }

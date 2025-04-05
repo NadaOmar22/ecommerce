@@ -1,6 +1,7 @@
 package com.practice.ecommerce.service;
 
 import com.practice.ecommerce.model.Order;
+import com.practice.ecommerce.model.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,5 +15,6 @@ public interface OrderService {
     void saveOrUpdateOrder(Order order);
     void deleteOrder(int id);
     void confirmOrder(int orderId);
+    List<OrderItem> getOrderItems(int orderId);
 }
 

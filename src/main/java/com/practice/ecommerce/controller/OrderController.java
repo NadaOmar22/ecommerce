@@ -1,7 +1,9 @@
 package com.practice.ecommerce.controller;
 
 import com.practice.ecommerce.model.Order;
+import com.practice.ecommerce.service.BranchService;
 import com.practice.ecommerce.service.OrderService;
+import com.practice.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,10 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private BranchService branchService;
 
     @GetMapping
     public String listOrders(Model model) {
@@ -27,6 +33,8 @@ public class OrderController {
     public String showOrderDetails(@PathVariable int id, Model model) {
         Order order = orderService.getOrderById(id);
         model.addAttribute("order", order);
+        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("branches", branchService.getAllBranches());
         return "orderDetails";
     }
 
@@ -39,6 +47,8 @@ public class OrderController {
     @GetMapping("/orderForm")
     public String showOrderForm(Model model) {
         model.addAttribute("order", new Order());
+        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("branches", branchService.getAllBranches());
         return "orderDetails";
     }
 

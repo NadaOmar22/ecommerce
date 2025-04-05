@@ -2,6 +2,7 @@ package com.practice.ecommerce.serviceImpl;
 
 import com.practice.ecommerce.dao.OrderDAO;
 import com.practice.ecommerce.model.Order;
+import com.practice.ecommerce.model.OrderItem;
 import com.practice.ecommerce.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void confirmOrder(int orderId) {
         orderDAO.confirmOrder(orderId);
+    }
+
+    @Override
+    public List<OrderItem> getOrderItems(int orderId) {
+        return orderDAO.getOrderItems(orderId);
     }
 }
 

@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-group">
-                <label for="branch">Product:</label>
+                <label for="branch">Branch:</label>
                 <select class="form-control" id="branch" name="branch.id" required>
                     <option value="" disabled>Select a branch</option>
                     <c:forEach var="branch" items="${branches}">
